@@ -1,0 +1,86 @@
+seed.0 =				time
+
+checkpoint		= true
+prefix			= wpattern.checkpoint.test_08_MLP
+checkpoint-modulo	= 1
+
+state		= org.wpattern.pattern.recognition.elements.StateBean
+
+stat.file = $test_08_MLP_out.stat
+
+jobs	= 1
+pop		= ec.Population
+init		= org.wpattern.pattern.recognition.elements.StateInitializer
+finish		= ec.simple.SimpleFinisher
+breed		= ec.simple.SimpleBreeder
+eval		= ec.simple.SimpleEvaluator
+stat		= org.wpattern.pattern.recognition.elements.Statistics
+exch		= ec.simple.SimpleExchanger
+
+generations		= 50
+quit-on-run-complete	= true
+
+select.tournament.size		= 2
+
+eval.problem		= org.wpattern.pattern.recognition.elements.Evaluator
+
+###############################################################################################
+#                                        POPULATIONS                                          #
+###############################################################################################
+
+
+pop.subpops		= 3
+
+# Population 0
+pop.subpop.0	= ec.Subpopulation
+pop.subpop.0.size 		= 50
+pop.subpop.0.duplicate-retries 	= 20
+pop.subpop.0.species 		= ec.vector.VectorSpecies
+pop.subpop.0.species.fitness 	= ec.simple.SimpleFitness
+pop.subpop.0.species.crossover-type	= two
+pop.subpop.0.species.mutation-prob	= 0.03
+pop.subpop.0.species.pipe			= ec.vector.breed.VectorMutationPipeline
+pop.subpop.0.species.pipe.source.0		= ec.vector.breed.VectorCrossoverPipeline
+pop.subpop.0.species.pipe.source.0.source.0	= ec.select.TournamentSelection
+pop.subpop.0.species.pipe.source.0.source.1	= ec.select.TournamentSelection
+# Population 0 (parameters of the algorithms for pattern recognition)
+pop.subpop.0.species.ind	= org.wpattern.pattern.recognition.individuals.MultilayerPerceptronIndividual
+pop.subpop.0.species.num-folds	= 2
+pop.subpop.0.species.num-executions	= 1
+
+
+# Population 1
+pop.subpop.1	= ec.Subpopulation
+pop.subpop.1.size 		= 50
+pop.subpop.1.duplicate-retries 	= 20
+pop.subpop.1.species 		= ec.vector.VectorSpecies
+pop.subpop.1.species.fitness 	= ec.simple.SimpleFitness
+pop.subpop.1.species.crossover-type	= two
+pop.subpop.1.species.mutation-prob	= 0.03
+pop.subpop.1.species.pipe			= ec.vector.breed.VectorMutationPipeline
+pop.subpop.1.species.pipe.source.0		= ec.vector.breed.VectorCrossoverPipeline
+pop.subpop.1.species.pipe.source.0.source.0	= ec.select.TournamentSelection
+pop.subpop.1.species.pipe.source.0.source.1	= ec.select.TournamentSelection
+# Population 1 (parameters of the algorithms for pattern recognition)
+pop.subpop.1.species.ind	= org.wpattern.pattern.recognition.individuals.MultilayerPerceptronIndividual
+pop.subpop.1.species.num-folds	= 5
+pop.subpop.1.species.num-executions	= 1
+
+
+# Population 2
+pop.subpop.2	= ec.Subpopulation
+pop.subpop.2.size 		= 50
+pop.subpop.2.duplicate-retries 	= 20
+pop.subpop.2.species 		= ec.vector.VectorSpecies
+pop.subpop.2.species.fitness 	= ec.simple.SimpleFitness
+pop.subpop.2.species.crossover-type	= two
+pop.subpop.2.species.mutation-prob	= 0.03
+pop.subpop.2.species.pipe			= ec.vector.breed.VectorMutationPipeline
+pop.subpop.2.species.pipe.source.0		= ec.vector.breed.VectorCrossoverPipeline
+pop.subpop.2.species.pipe.source.0.source.0	= ec.select.TournamentSelection
+pop.subpop.2.species.pipe.source.0.source.1	= ec.select.TournamentSelection
+# Population 2 (parameters of the algorithms for pattern recognition)
+pop.subpop.2.species.ind	= org.wpattern.pattern.recognition.individuals.MultilayerPerceptronIndividual
+pop.subpop.2.species.num-folds	= 10
+pop.subpop.2.species.num-executions	= 1
+
